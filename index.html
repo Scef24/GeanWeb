@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel with Gean</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Explore the World with Gean Dela Cruz</h1>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="image-about">
+            <img src="images/pic1.jpg" alt="Gean Dela Cruz" height="500px" width="500px">
+        </div>
+        <p>Hello! I'm Gean Dela Cruz, a 23-year-old travel enthusiast from Abuno Pajac Bayanihan Flats 1, Lapu Lapu City. Traveling has always been my passion, and I love exploring new places and cultures. When I'm not traveling, you can find me playing tennis, another hobby that keeps me active and energized.</p>
+    </section>
+    <section id="destinations" class="destinations">
+        <h2>Top Destinations</h2>
+        <div class="image-about">
+            <img src="images/crch.jpg" alt="Gean Dela Cruz" height="500px" width="500px">
+        </div>
+        <p>Join me as I share my experiences from some of the most breathtaking places around the world. Whether it's the serene beaches or the majestic mountains, each adventure has a unique story to tell.</p>
+        <p>Recently, I embarked on a journey that left me in awe, where the blend of tradition and modernity created an unforgettable experience. The bustling streets, delicious cuisine, and rich history make every adventure a must-experience journey.</p>
+    </section>
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="imageGallery">
+            <div class="imageContainer">
+                <img src="images/bkn.jpg" alt="Destination 1" >
+                <img src="images/jeep2.jpg" alt="Destination 2" >
+                <img src="images/zipline.jpg" alt="Destination 3" >
+                <img src="images/moad.jpg" alt="Destination 4" height="300px" width="300px">
+                <img src="images/tower.jpg" alt="Destination 5" height="300px" width="300px">
+                <img src="images/zipline2.jpg" alt="Destination 6" height="300px" width="300px">
+                <img src="images/road.jpg" alt="Destination 7" height="300px" width="300px">
+                <img src="images/jeep.jpg" alt="Destination 8" height="300px" width="300px">
+            </div>
+        </div>
+        <button id="nextButton">Next</button>
+        <p>Each photo captures a moment from my travels, a memory that I cherish. Whether it's a sunrise over the ocean or a bustling market scene, these images tell the story of my journey.</p>
+    </section>
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <p>If you have any questions or would like to share your travel experiences, feel free to reach out to me. I would love to hear from fellow travel enthusiasts!</p>
+        <p>Email: delacruzgean201@gmail.com</p>
+        <p>Phone: +123 456 7890</p>
+    </section>
+    <footer>
+        <p>&copy; 2023 Travel with Gean. All rights reserved.</p>
+    </footer>
+    <script>
+        const imageContainer = document.querySelector('.imageContainer');
+        const images = document.querySelectorAll('.imageContainer img');
+        const nextButton = document.getElementById('nextButton');
+        let currentIndex = 0;
+
+        function getImagesPerView() {
+            if (window.innerWidth <= 480) {
+                return 1; 
+            } else if (window.innerWidth <= 768) {
+                return 2; 
+            } else {
+                return 3;
+            }
+        }
+
+        function updateGallery() {
+            const imagesPerView = getImagesPerView();
+            const offset = -(currentIndex * (100 / imagesPerView));
+            imageContainer.style.transform = `translateX(${offset}%)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            const imagesPerView = getImagesPerView();
+            currentIndex += imagesPerView;
+            if (currentIndex >= images.length) {
+                currentIndex = 0; 
+            }
+            updateGallery();
+        });
+
+        window.addEventListener('resize', updateGallery); // Update gallery on window resize
+    </script>
+</body>
+</html>
